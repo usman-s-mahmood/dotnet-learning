@@ -1,0 +1,66 @@
+# Build Folders
+bin/
+obj/
+
+# Visual Studio temporary files
+.vs/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build Results
+*.log
+*.tlog
+*.idb
+
+# Compiled Code
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.lib
+*.ndk
+*.exp
+
+# Web-specific
+wwwroot/
+node_modules/
+bower_components/
+
+# NPM & Yarn
+package-lock.json
+yarn.lock
+
+# Logs and Database
+*.log
+*.ldf
+*.mdf
+
+# Publish Output
+publish/
+out/
+
+# Azure
+.azure/
+.localhistory/
+
+# Rider
+.idea/
+*.sln.iml
+
+# macOS-specific
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+desktop.ini
+
+# Secrets
+secrets.json
+
+# GitHub Actions
+!/.github/
