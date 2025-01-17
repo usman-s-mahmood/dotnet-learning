@@ -4,10 +4,6 @@ obj/
 
 # Visual Studio temporary files
 .vs/
-.vscode/
-
-# node js
-node_modules/
 
 # User-specific files
 *.suo
