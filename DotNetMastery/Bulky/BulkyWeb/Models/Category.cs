@@ -7,10 +7,12 @@ namespace BulkyWeb.Models
     {
         public int Id { get; set; } // Primary Key
         [Required]
+        [MaxLength(30, ErrorMessage = "Name must be <= 30 characters")]
         [DisplayName("Category Name")]
         public string? Name { get; set; } // Category Name
 
         [DisplayName("Display Order")] // for frontend with use of asp-for
+        [Range(1, 100, ErrorMessage = "Range Must be within 1 to 100")]
         public int DisplayOrder { get; set; } // Display Order for sorting
     }
 }

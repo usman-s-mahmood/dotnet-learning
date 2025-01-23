@@ -27,9 +27,36 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            _db.Categories.Add(obj); // this will make the new category object
-            _db.SaveChanges(); // this will apply changes to database!
-            return RedirectToAction("Index"); // second arg can be the name of controller if the controller of action is other than the Base Class!
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError(
+                    "Name", // this is for key, the field for which this custom error is being made!
+                    "Name and display order can't be same" // this is the custom error!
+                );
+            }
+            if (obj.Name != null || obj.Name.ToLower() == "test")
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Invalid Name for Category!"
+                );
+            }
+
+            if (obj.DisplayOrder == 0)
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Invalid Value for display number!"
+                );
+            }
+            if (ModelState.IsValid) // this will make sure that the object details are inline with the data annotations defined in the model!
+            {
+                _db.Categories.Add(obj); // this will make the new category object
+                _db.SaveChanges(); // this will apply changes to database
+                return RedirectToAction("Index"); // second arg can be the name of controller if the controller of action is other than the Base Class!
+
+            }
+            return View();
         }
     }
 }

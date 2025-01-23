@@ -12,13 +12,16 @@
         <div class="row pb-2">
             <p class="text-primary fs-2"><strong>Create Category</strong></p>            
         </div>
+        <div asp-validation-summary="All"></div> @*Validation Summary for all fields*@
         <div class="mb-3">
             <label>Category Name</label>
             <input type="text" asp-for="Name" value="" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
         </div>
         <div class="mb-3">
             <label asp-for="DisplayOrder"></label>
             <input type="text" asp-for="DisplayOrder" value="" class="form-control" />
+            <span class="text-danger" asp-validation-for="DisplayOrder"></span>
         </div>
         <div class="row">
             <div class="col-md-6 col-md-3">
@@ -30,3 +33,10 @@
         </div>
     </div>
 </form>
+
+@*This will add client side validation to the project that will use server side validation without refreshing the page*@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
