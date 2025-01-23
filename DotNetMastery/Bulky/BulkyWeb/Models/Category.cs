@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace BulkyWeb.Models
 {
@@ -6,7 +7,10 @@ namespace BulkyWeb.Models
     {
         public int Id { get; set; } // Primary Key
         [Required]
+        [DisplayName("Category Name")]
         public string? Name { get; set; } // Category Name
+
+        [DisplayName("Display Order")] // for frontend with use of asp-for
         public int DisplayOrder { get; set; } // Display Order for sorting
     }
 }
