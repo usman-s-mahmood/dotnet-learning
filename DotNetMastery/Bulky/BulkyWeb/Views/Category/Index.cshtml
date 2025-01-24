@@ -31,7 +31,12 @@
                 <tr>
                     <td>@i.Name</td>
                     <td>@i.DisplayOrder</td>
-                    <td>Edit Button and delete button with Icon</td> @*Too lazy right now, continue this next time!*@
+                    <td>
+                        <div class="w-75 btn-group">
+                            <a asp-action="Edit" asp-route-id="@i.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i> Delete</a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>
