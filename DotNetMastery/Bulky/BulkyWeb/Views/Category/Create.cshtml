@@ -6,6 +6,7 @@
 @model Category
 
 <h1>Create Category!</h1>
+@* <partial name="_Notification" /> *@
 
 <form method="post">
     <div class="border pb-3 mt-4">
@@ -15,12 +16,12 @@
         <div asp-validation-summary="All"></div> @*Validation Summary for all fields*@
         <div class="mb-3">
             <label>Category Name</label>
-            <input type="text" asp-for="Name" value="" class="form-control" />
+            <input type="text" asp-for="Name" class="form-control" />
             <span class="text-danger" asp-validation-for="Name"></span>
         </div>
         <div class="mb-3">
             <label asp-for="DisplayOrder"></label>
-            <input type="text" asp-for="DisplayOrder" value="" class="form-control" />
+            <input type="text" asp-for="DisplayOrder" class="form-control" />
             <span class="text-danger" asp-validation-for="DisplayOrder"></span>
         </div>
         <div class="row">

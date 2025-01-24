@@ -27,6 +27,7 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
+            Console.WriteLine($"Obj. Props.\nName: {obj.Name} | DisplayOrder: {obj.DisplayOrder}\nCheck: {obj.Name == null}");
             if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError(
@@ -34,12 +35,13 @@ namespace BulkyWeb.Controllers
                     "Name and display order can't be same" // this is the custom error!
                 );
             }
-            if (obj.Name != null || obj.Name.ToLower() == "test")
+            if (obj.Name == null || obj.Name.ToLower() == "test")
             {
                 ModelState.AddModelError(
                     "",
                     "Invalid Name for Category!"
                 );
+                Console.WriteLine("Reached Here!");
             }
 
             if (obj.DisplayOrder == 0)
@@ -53,6 +55,7 @@ namespace BulkyWeb.Controllers
             {
                 _db.Categories.Add(obj); // this will make the new category object
                 _db.SaveChanges(); // this will apply changes to database
+                TempData["success"] = "Category Created!";
                 return RedirectToAction("Index"); // second arg can be the name of controller if the controller of action is other than the Base Class!
 
             }
@@ -85,6 +88,7 @@ namespace BulkyWeb.Controllers
                 //Console.WriteLine($"Properties are: \nID: {obj.Id}\nName: {obj.Name}\n{obj.DisplayOrder}");
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category Updated!";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -110,6 +114,7 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "Category Deleted!";
             return RedirectToAction("Index");
         }
 
